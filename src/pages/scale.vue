@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import * as THREE from 'three' //引入Threejs
+const THREE = window.THREE
+
 let scaleX = ref(1)
 let scaleY = ref(1)
 let scaleZ = ref(1)

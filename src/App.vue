@@ -2,8 +2,6 @@
   <router-view></router-view>
 </template>
 <script >
-import * as THREE from 'three' //引入Threejs
-window.THREE = THREE
 </script>
 
 <style>
