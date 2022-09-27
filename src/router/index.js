@@ -2,6 +2,7 @@ import { createRouter,createWebHashHistory} from "vue-router";
 const scale = () => import("../pages/scale.vue")
 const Home = () => import("../pages/Home.vue")
 const weather = () => import("../pages/weather.vue")
+const shader = () => import("../pages/shader.vue")
 
 const routes = [
   { path: "/", 
@@ -21,6 +22,11 @@ const routes = [
     path: "/weather",
     name: "weather",
     component: weather
+  },
+  {
+    path: "/shader",
+    name: "shader",
+    component: shader
   }
 ]
 let router = null

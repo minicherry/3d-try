@@ -64,19 +64,19 @@ export default {
     const animate = () =>{
       const delta = clock.getDelta();
       controls.update(delta);
-      // scene.children.forEach(function (child) {
-      //   if (child instanceof THREE.Points) {
-      //     var vertices = child.geometry.vertices;
-      //     vertices.forEach(function (v) {
-      //       v.y = v.y - (v.velocityY);
-      //       v.x = v.x - (v.velocityX);
-      //       if (v.y <= -20) v.y = 60;
-      //       if (v.x <= -20 || v.x >= 20) v.velocityX = v.velocityX * -1;
-      //     });
-      //     // 顶点变动之后需要更新，否则无法实现特效
-      //     child.geometry.verticesNeedUpdate = true
-      //   }
-      // })
+      scene.children.forEach(function (child) {
+        if (child instanceof THREE.Points) {
+          var vertices = child.geometry.vertices;
+          vertices.forEach(function (v) {
+            v.y = v.y - (v.velocityY);
+            v.x = v.x - (v.velocityX);
+            if (v.y <= -20) v.y = 60;
+            if (v.x <= -20 || v.x >= 20) v.velocityX = v.velocityX * -1;
+          });
+          // 顶点变动之后需要更新，否则无法实现特效
+          child.geometry.verticesNeedUpdate = true
+        }
+      })
       requestAnimationFrame(animate);
       renderer.render(scene, camera);
     }
@@ -105,7 +105,6 @@ export default {
       scene.add(createPointCloud("snowflake", texture3, size, transparent, opacity, sizeAttenuation, color));
       scene.add(createPointCloud("snowflake", texture4, size, transparent, opacity, sizeAttenuation, color));
       scene.add(createPointCloud("snowflake", texture5, size, transparent, opacity, sizeAttenuation, color));
-      console.log(scene)
     }
     const createPointCloud = (name, texture, size, transparent, opacity, sizeAttenuation, color) =>{
       var geom = new THREE.Geometry();
@@ -136,7 +135,6 @@ export default {
     }
     const createRainClouds = (size, transparent, opacity, sizeAttenuation, color) =>{
       let raindrop = new URL('../assets/weather/points/raindrop-3.png', import.meta.url).href
-      console.log(raindrop)
       const texture1 = new THREE.TextureLoader().load(raindrop)
       scene.add(createPointCloud("system1", texture1, size, transparent, opacity, sizeAttenuation, color));
     }
@@ -150,10 +148,6 @@ export default {
 
 <style scoped>
   #WebGL-output{
-    height: 400px;
-    width: 400px;
-  }
-  .aaa{
     height: 400px;
     width: 400px;
   }
