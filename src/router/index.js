@@ -3,6 +3,7 @@ const scale = () => import("../pages/scale.vue")
 const Home = () => import("../pages/Home.vue")
 const weather = () => import("../pages/weather.vue")
 const shader = () => import("../pages/shader.vue")
+const skyBox = () => import("../pages/skyBox.vue")
 
 const routes = [
   { path: "/", 
@@ -27,6 +28,11 @@ const routes = [
     path: "/shader",
     name: "shader",
     component: shader
+  },
+  {
+    path: "/skyBox",
+    name: "skyBox",
+    component: skyBox
   }
 ]
 let router = null
