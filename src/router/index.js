@@ -4,6 +4,7 @@ const Home = () => import("../pages/Home.vue")
 const weather = () => import("../pages/weather.vue")
 const shader = () => import("../pages/shader.vue")
 const skyBox = () => import("../pages/skyBox.vue")
+const textureCompression = () => import("../pages/textureCompression.vue")
 
 const routes = [
   { path: "/", 
@@ -33,6 +34,11 @@ const routes = [
     path: "/skyBox",
     name: "skyBox",
     component: skyBox
+  },
+  {
+    path: "/textureCompression",
+    name: "textureCompression",
+    component: textureCompression
   }
 ]
 let router = null
