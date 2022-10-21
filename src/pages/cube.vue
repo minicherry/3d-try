@@ -2,10 +2,7 @@
 </template>
 <script>
  import * as THREE from '../../public/lib/three.moudule';
-
-    import { BasisTextureLoader } from '../../public/lib/BasusTextureLoader';
-        import { KTXLoader } from '../../public/lib/KTXLoader';
-
+console.log(THREE);
 export default {
   setup() {
     var camera, scene, renderer;
@@ -29,31 +26,19 @@ export default {
 
         scene = new THREE.Scene();
 
+        // const geometry = new THREE.PlaneGeometry( 100, 100 );
+
         var geometry = new THREE.BoxBufferGeometry( 200, 200, 200 );
-        var material = new THREE.MeshBasicMaterial();
+
+        let a = new URL('../assets/textureCompression/9000.png', import.meta.url).href
+        let map = new THREE.TextureLoader().load(a);
+
+        var material = new THREE.MeshBasicMaterial({ map: map });
+        material.needsUpdate = true;
 
         mesh = new THREE.Mesh( geometry, material );
 
         scene.add( mesh );
-        // const loader = new KTXLoader();
-        // let a = new URL('../assets/textureCompression/bg.ktx2', import.meta.url).href
-        // let map = new loader.load(a);
-        // var material = new THREE.MeshBasicMaterial({ map: map });
-        // material.needsUpdate = true;
-        // mesh = new THREE.Mesh( geometry, material );
-        // scene.add( mesh );
-
-        var loader = new BasisTextureLoader();
-        loader.setTranscoderPath( '../../public/lib/basis/' );
-        loader.detectSupport( renderer );
-        let a = new URL('../assets/textureCompression/9000.basis', import.meta.url)
-        loader.load( a, function ( texture ) {
-          texture.encoding = THREE.sRGBEncoding;
-          material.map = texture;
-          material.needsUpdate = true;
-        }, undefined, function ( error ) {
-            console.error( error );
-        } );
 
         window.addEventListener( 'resize', onWindowResize, false );
 
